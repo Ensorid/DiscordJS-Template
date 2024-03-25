@@ -1,10 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { Client, Collection } from "discord.js";
-import { logger } from "./logger";
+import { logger } from "../utils/logger";
 
 export function loadCommands(client: Client) {
   client.commands = new Collection();
+  client.cooldowns = new Collection();
 
   const foldersPath = path.join(__dirname, "../commands");
   const commandFolders = fs.readdirSync(foldersPath);

@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { REST, Routes } from "discord.js";
 import { logger } from "./logger";
-import { getCommands } from "./getCommands";
+import { getCommands } from "../handlers/getCommands";
 
 const { publicBot } = require("../../config.json");
 

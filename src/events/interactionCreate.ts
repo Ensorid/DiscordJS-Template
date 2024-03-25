@@ -1,5 +1,6 @@
 import { Events } from "discord.js";
 import { logger } from "../utils/logger";
+import { Collection } from "discord.js";
 
 module.exports = {
   name: Events.InteractionCreate,
@@ -11,11 +12,39 @@ module.exports = {
     if (!command) {
       logger.error(`No command matching ${interaction.commandName} was found.`);
       await interaction.reply({
-        content: `This command is no longer available! Please contact an administrator to update the command list.`,
+        content: `This command is no longer available. Please contact an administrator to update the command list.`,
         ephemeral: true,
       });
       return;
     }
+
+    const { cooldowns } = interaction.client;
+
+    if (!cooldowns.has(command.data.name)) {
+      cooldowns.set(command.data.name, new Collection());
+    }
+
+    const now = Date.now();
+    const timestamps = cooldowns.get(command.data.name);
+    const defaultCooldownDuration = 3;
+    const cooldownAmount =
+      (command.cooldown ?? defaultCooldownDuration) * 1_000;
+
+    if (timestamps.has(interaction.user.id)) {
+      const expirationTime =
+        timestamps.get(interaction.user.id) + cooldownAmount;
+
+      if (now < expirationTime) {
+        const expiredTimestamp = Math.round(expirationTime / 1_000);
+        return interaction.reply({
+          content: `Please wait, you are on a cooldown for this command. You can use it again <t:${expiredTimestamp}:R>.`,
+          ephemeral: true,
+        });
+      }
+    }
+
+    timestamps.set(interaction.user.id, now);
+    setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount);
 
     try {
       await command.execute(interaction);

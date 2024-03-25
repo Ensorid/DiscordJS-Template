@@ -1,9 +1,9 @@
 import "dotenv/config";
 import { Client } from "discord.js";
-import { Intents } from "./utils/getIntents";
-import { loadCommands } from "./utils/loadCommands";
-import { loadEvents } from "./utils/loadEvents";
-import { deployCommands } from "./utils/deployCommands";
+import { Intents } from "./utils/intents";
+import { loadCommands } from "./handlers/loadCommands";
+import { loadEvents } from "./handlers/loadEvents";
+import { deployCommands } from "./utils/deploy";
 
 const client = new Client({
   intents: Intents,
