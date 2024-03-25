@@ -1,0 +1,36 @@
+{
+  "name": "discordjs-template",
+  "version": "1.0.0",
+  "description": "A discordjs template written in typescript.",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc"
+  },
+  "keywords": [
+    "DiscordJS",
+    "Bot",
+    "TypeScript"
+  ],
+  "author": "Ensorid",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.26",
+    "eslint": "^8.57.0",
+    "tsx": "^4.7.1"
+  },
+  "dependencies": {
+    "@discordjs/voice": "^0.16.1",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ensorid/discordjs-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ensorid/discordjs-template/issues"
+  },
+  "homepage": "https://github.com/ensorid/discordjs-template#readme"
+}

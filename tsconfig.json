@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+      "target": "ES2022",
+      "module": "CommonJS",
+      "moduleResolution": "Node",
+      "types": ["node"],
+      "typeRoots": ["node_modules/@types"],
+      "strict": true,
+      "esModuleInterop": true,
+      "outDir": "dist"
+  },
+  "include": ["src", "discord.d.ts"],
+  "exclude": ["node_modules"]
+}
