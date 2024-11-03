@@ -1,4 +1,4 @@
-# Discord Bot Project 🤖
+# Discord Bot Template 🤖
 
 Welcome to my Discord Bot template project! This bot is built using TypeScript and Node.js, following the recommendations from the [Discord.js Guide](https://discordjs.guide). 
 
