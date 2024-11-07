@@ -9,8 +9,7 @@ This project is written for fun only. I don't consider myself a developer. 🎉
 ## 📦 Features
 
 - Basic command and events handling
-- High customisation 
-- Fun interactions with users
+- High customisation
 
 ## 🛠️ Technologies Used
 
