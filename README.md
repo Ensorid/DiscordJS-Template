@@ -9,6 +9,7 @@ This project is written for fun only. I don't consider myself a developer. 🎉
 ## 📦 Features
 
 - Basic command and events handling
+- Cooldown support
 - High customisation
 
 ## 🛠️ Technologies Used
@@ -26,7 +27,7 @@ To get a local copy up and running, follow these simple steps:
    git clone https://github.com/Ensorid/DiscordJS-Template.git
    ```
 
-2. **Install NPM package using PNPM**
+2. **Install packages using PNPM**
    ```bash
     cd DiscordJS-Template
     pnpm i
@@ -56,7 +57,7 @@ Once the bot is running, you can interact with it in your Discord server. Use th
 
 ## 🤝 Contributing
 
-I welcome any contributions, suggestions, or feedback! You can submit any issues, or submit a pull request from the appropriate menus.
+I welcome any contributions, suggestions, or feedback! You can submit any issues, or submit a pull request from the appropriate sections.
 
 ## 📄 License
 
