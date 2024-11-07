@@ -8,10 +8,12 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 declare module 'discord.js' {
     interface Client {
         commands: Collection<string, any>;
+		cooldowns: Collection<any, any>
     }
 }
 
 client.commands = new Collection();
+client.cooldowns = new Collection();
 
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
