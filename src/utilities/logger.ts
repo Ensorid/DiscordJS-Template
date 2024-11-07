@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { logInConsole } from '../../config.json';
 
 export enum level {
     INFO = 'INFO',
@@ -21,6 +22,9 @@ export function log(message: string, level: level): void {
     const timeStamp = date.toTimeString().split(' ')[0];
     const logMessage = `${timeStamp} [${level}] ${message}`;
 
-    console.log(logMessage)
+    if (logInConsole) {
+        console.log(logMessage)
+    }
+
     fs.appendFileSync(logFilePath, logMessage+'\n', { encoding: 'utf8' });
 }
