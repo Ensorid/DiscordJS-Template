@@ -44,10 +44,15 @@ module.exports = {
 			await command.execute(interaction);
 		} catch (error) {
 			console.error(error);
+
+			const locales: { [key: string]: string } = {
+				fr: `Une erreur s'\est produite durant l'execution de cette commande`
+			}
+
 			if (interaction.replied || interaction.deferred) {
-				await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
+				await interaction.followUp({ content: locales[interaction.locale] ?? 'There was an error while executing this command!', ephemeral: true });
 			} else {
-				await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+				await interaction.reply({ content: locales[interaction.locale] ?? 'There was an error while executing this command!', ephemeral: true });
 			}
 		}
 	},
