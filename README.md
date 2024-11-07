@@ -11,6 +11,7 @@ This project is written for fun only. I don't consider myself a developer. 🎉
 - Basic command and events handling
 - Cooldown support
 - High customisation
+- Log system
 
 ## 🛠️ Technologies Used
 
@@ -48,7 +49,7 @@ To get a local copy up and running, follow these simple steps:
 5. **Build and run for production**
    ```bash
    pnpm run build # Build the code to /dist folder
-   pnpm run start # Start the bot from /fist folder
+   pnpm run start # Start the bot from /dist folder
    ```
 
 ## 📖 Usage

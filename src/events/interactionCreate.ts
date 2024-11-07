@@ -1,4 +1,5 @@
 import { Collection, Events } from 'discord.js';
+import { log, level } from '../utilities/logger';
 
 module.exports = {
 	name: Events.InteractionCreate,
@@ -8,7 +9,13 @@ module.exports = {
 		const command = interaction.client.commands.get(interaction.commandName);
 
 		if (!command) {
-			console.error(`No command matching ${interaction.commandName} was found.`);
+			log(`command ${interaction.commandName} not found for ${interaction.user.username} (${interaction.user.id}) on ${interaction.guild.name} (${interaction.guild.id})`, level.WARN);
+
+			const locales: { [key: string]: string } = {
+				fr: `Aucune commande n'a été trouvée pour ${interaction.commandName}`
+			}
+
+			interaction.reply({ content: locales[interaction.locale] ?? `No command was found for ${interaction.commandName}`, ephemeral: true})
 			return;
 		}
 
@@ -42,6 +49,7 @@ module.exports = {
 
 		try {
 			await command.execute(interaction);
+			log(`command ${command.data.name} used by ${interaction.user.username} (${interaction.user.id}) on ${interaction.guild.name} (${interaction.guild.id})`, level.INFO)
 		} catch (error) {
 			console.error(error);
 

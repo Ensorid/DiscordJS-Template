@@ -2,6 +2,7 @@ import { REST, Routes } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
 import 'dotenv/config';
+import { log, level } from './utilities/logger';
 
 const commands: any[] = [];
 
@@ -26,15 +27,15 @@ const rest = new REST().setToken(process.env.TOKEN as string);
 
 (async () => {
 	try {
-		console.log(`Started refreshing ${commands.length} application (/) commands.`);
+		log(`refreshing ${commands.length} application (/) commands.`, level.DEBUG);
 
 		const data = await rest.put(
 			Routes.applicationCommands(process.env.CLIENTID as string),
 			{ body: commands },
 		);
 
-		console.log(`Successfully reloaded ${Array.isArray(data) ? data.length : 0} application (/) commands.`);
+		log(`successfully reloaded ${Array.isArray(data) ? data.length : 0} application (/) commands.`, level.DEBUG);
 	} catch (error) {
-		console.error(error);
+		log(error as string, level.ERROR);
 	}
 })();

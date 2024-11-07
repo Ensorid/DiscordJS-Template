@@ -1,5 +1,6 @@
 /dist/
 /node_modules/
+/logs/
 
 .env
 pnpm-lock.yaml

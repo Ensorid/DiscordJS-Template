@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
 import 'dotenv/config';
+import { log, level } from './utilities/logger';
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -27,7 +28,7 @@ for (const folder of commandFolders) {
 		if ('data' in command && 'execute' in command) {
 			client.commands.set(command.data.name, command);
 		} else {
-			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+			log(`command at ${filePath} is missing a required "data" or "execute" property.`, level.WARN);
 		}
 	}
 }
