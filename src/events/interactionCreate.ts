@@ -28,7 +28,12 @@ module.exports = {
 	
 			if (now < expirationTime) {
 				const expiredTimestamp = Math.round(expirationTime / 1000);
-				return interaction.reply({ content: `Please wait, you are on a cooldown for \`${command.data.name}\`. You can use it again <t:${expiredTimestamp}:R>.`, ephemeral: true });
+
+				const locales: { [key: string]: string } = {
+					fr: `Veuillez patienter, vous êtes en attente pour la commmande \`${command.data.name}\`. Vous pourrez l\'utiliser <t:${expiredTimestamp}:R>`
+				}
+
+				return interaction.reply({ content: locales[interaction.locale] ?? `Please wait, you are on a cooldown for \`${command.data.name}\`. You can use it again <t:${expiredTimestamp}:R>.`, ephemeral: true });
 			}
 		}
 	
