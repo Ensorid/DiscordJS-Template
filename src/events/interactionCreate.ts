@@ -30,7 +30,7 @@ module.exports = {
 				const expiredTimestamp = Math.round(expirationTime / 1000);
 
 				const locales: { [key: string]: string } = {
-					fr: `Veuillez patienter, vous êtes en attente pour la commmande \`${command.data.name}\`. Vous pourrez l\'utiliser <t:${expiredTimestamp}:R>`
+					fr: `Veuillez patienter, vous êtes en attente pour la commmande \`${command.data.name}\`. Vous pourrez l\'utiliser <t:${expiredTimestamp}:R>.`
 				}
 
 				return interaction.reply({ content: locales[interaction.locale] ?? `Please wait, you are on a cooldown for \`${command.data.name}\`. You can use it again <t:${expiredTimestamp}:R>.`, ephemeral: true });
@@ -46,7 +46,7 @@ module.exports = {
 			console.error(error);
 
 			const locales: { [key: string]: string } = {
-				fr: `Une erreur s'\est produite durant l'execution de cette commande`
+				fr: `Une erreur s'\est produite durant l'execution de cette commande !`
 			}
 
 			if (interaction.replied || interaction.deferred) {
