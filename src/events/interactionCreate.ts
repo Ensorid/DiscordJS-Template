@@ -51,7 +51,7 @@ module.exports = {
 			await command.execute(interaction);
 			log(`command ${command.data.name} used by ${interaction.user.username} (${interaction.user.id}) on ${interaction.guild.name} (${interaction.guild.id})`, level.INFO)
 		} catch (error) {
-			console.error(error);
+			log(error as string, level.ERROR);
 
 			const locales: { [key: string]: string } = {
 				fr: `Une erreur s'\est produite durant l'execution de cette commande !`
