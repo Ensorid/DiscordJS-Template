@@ -9,7 +9,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 declare module 'discord.js' {
     interface Client {
         commands: Collection<string, any>;
-		cooldowns: Collection<any, any>
+		cooldowns: Collection<any, any>;
     }
 }
 

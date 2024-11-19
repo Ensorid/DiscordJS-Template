@@ -1,3 +1,4 @@
 {
-    "logInConsole": true
+    "logInConsole": true,
+    "privateBot": false
 }
