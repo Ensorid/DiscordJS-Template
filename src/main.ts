@@ -7,7 +7,6 @@ import { log, level } from "./utilities/logger";
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 declare module "discord.js" {
-    // eslint-disable-next-line no-shadow
     interface Client {
         commands: Collection<string, unknown>;
 		cooldowns: Collection<unknown, unknown>;

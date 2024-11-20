@@ -3,7 +3,6 @@ import { log, level } from "../utilities/logger";
 
 module.exports = {
 	name: Events.InteractionCreate,
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	async execute(interaction: any) {
 		if (!interaction.isChatInputCommand()) return;
 
