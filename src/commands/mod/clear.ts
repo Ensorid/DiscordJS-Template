@@ -1,5 +1,4 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits } from 'discord.js';
-import { log, level } from '../../utilities/logger';
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -35,6 +34,5 @@ module.exports = {
 
           interaction.reply({ content: locales[interaction.locale] ?? `Cleared ${messages.size} messages.`, ephemeral: true });
         })
-        .catch(error => log('Failed to fetch messages:' + error, level.ERROR));
     }  
 };
