@@ -34,12 +34,12 @@ const rest = new REST().setToken(process.env.TOKEN as string);
 
 		if (privateBot) {
 			data = await rest.put(
-				Routes.applicationCommands(process.env.CLIENTID as string),
+				Routes.applicationGuildCommands(process.env.CLIENTID as string, process.env.GUILDID as string),
 				{ body: commands },
 			);
 		} else {
 			data = await rest.put(
-				Routes.applicationGuildCommands(process.env.CLIENTID as string, process.env.GUILDID as string),
+				Routes.applicationCommands(process.env.CLIENTID as string),
 				{ body: commands },
 			);
 		}
