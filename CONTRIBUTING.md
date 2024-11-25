@@ -1,6 +1,6 @@
 # Contributing to DiscordJS-Template
 
-Thank you for considering contributing to the DiscordJS-Template! We welcome contributions from the community to help improve this project.
+Thank you for considering contributing to the DiscordJS-Template! I welcome contributions from the community to help improve this project.
 
 ## Purpose
 
@@ -16,7 +16,7 @@ This repository serves as a template for creating Discord bots using DiscordJS a
 
 ### Code Style
 
-We use ESLint for linting our code. Please ensure that your contributions adhere to the established code style.
+I use ESLint for linting our code. Please ensure that your contributions adhere to the established code style.
 
 ### How to Contribute
 
