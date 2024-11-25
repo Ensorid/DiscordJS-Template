@@ -11,6 +11,7 @@ export default [
 	...tseslint.configs.recommended,
 	{
 		rules: {
+			"@typescript-eslint/no-require-imports": "warn",
 			"arrow-spacing": ["warn", { "before": true, "after": true }],
 			"brace-style": ["error", "1tbs", { "allowSingleLine": true }],
 			"comma-dangle": ["error", "always-multiline"],
