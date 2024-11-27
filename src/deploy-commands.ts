@@ -5,7 +5,7 @@ import "dotenv/config";
 import { log, level } from "./utilities/logger";
 import { privateBot } from "../config.json";
 
-const commands: unknown[] = [];
+const commands: any[] = [];
 
 const foldersPath = path.join(__dirname, "commands");
 const commandFolders = fs.readdirSync(foldersPath);
@@ -30,7 +30,7 @@ const rest = new REST().setToken(process.env.TOKEN as string);
 	try {
 		log(`refreshing ${commands.length} application (/) commands.`, level.DEBUG);
 
-		let data: unknown;
+		let data: any;
 
 		if (privateBot) {
 			data = await rest.put(
