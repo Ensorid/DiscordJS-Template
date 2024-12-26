@@ -52,6 +52,29 @@ To get a local copy up and running, follow these simple steps:
    pnpm run start # Start the bot from /dist folder
    ```
 
+## 🐋 Docker
+
+For production, you can use Docker by following these steps :
+
+1. **Build your bot**
+   ```bash
+   pnpm run build
+   ```
+
+2. **Build your Docker image**
+   ```bash
+   docker build -t <your_bot_name> .
+   ```
+
+3. **Run your bot**
+   ```bash
+   docker run --env-file .env <your_bot_name>
+   ```
+
+> [!IMPORTANT]\
+> Don't forget to replace .env with your actual environment path.
+
+
 ## 📖 Usage
 
 Once the bot is running, you can interact with it in your Discord server. Use the commands defined in the bot to see what it can do!
