@@ -8,4 +8,4 @@ COPY config.json .
 
 RUN npm install
 
-CMD ["node", "dist/deploy-commands", "&&", "node", "."]
+CMD ["npm", "run", "start"]
