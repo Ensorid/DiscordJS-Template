@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/deploy-commands && node .",
     "softstart": "node .",
-    "dev": "tsx watch src/main.ts",
+    "dev": "tsx watch src/deploy-commands.ts && tsx watch src/main.ts",
     "deploy": "tsx watch src/deploy-commands.ts",
     "build": "tsc"
   },
