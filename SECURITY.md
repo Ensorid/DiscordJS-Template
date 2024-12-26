@@ -7,7 +7,7 @@ I take security seriously in the DiscordJS-Template project. If you discover a s
 ### Steps to Report
 
 1. **Do Not Create an Issue**: Please do not create a public issue in the repository. This helps prevent potential exploitation of the vulnerability.
-2. **Contact Us Directly**: Send an email to [ensorid@protonmail.com](mailto:ensorid@protonmail.com) with the following information:
+2. **Contact Me Directly**: Send an email to [ensorid@protonmail.com](mailto:ensorid@protonmail.com) with the following information:
    - A description of the vulnerability
    - Steps to reproduce the issue
    - Any relevant code snippets or screenshots
