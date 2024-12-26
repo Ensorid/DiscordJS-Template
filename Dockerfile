@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:20-slim
 
 WORKDIR /bot
 
@@ -9,4 +9,4 @@ COPY .env .
 
 RUN npm install
 
-CMD ["npm", "run", "start"]
+CMD ["node", "dist/deploy-commands", "&&", "node", "."]
