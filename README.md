@@ -34,19 +34,24 @@ To get a local copy up and running, follow these simple steps:
     pnpm i
    ```
 
-3. **Set up your environment variables**
-    Copy the `.env.example` to `.env` file in the root directory then add your Discord bot token and ClientId:
-    ```
-    TOKEN=YOUR_TOKEN
-    CLIENTID=YOUR_CLIENT_ID
-    ```
+3. **Install typescript globaly in your system**
+   ```bash
+    pnpm add -g typescript
+   ```
 
-4. **Run for developement**
+4. **Set up your environment variables**
+   Copy the `.env.example` to `.env` file in the root directory then add your Discord bot token and ClientId:
+   ```
+   TOKEN=YOUR_TOKEN
+   CLIENTID=YOUR_CLIENT_ID
+   ```
+
+5. **Run for developement**
    ```bash
    pnpm run dev
    ```
 
-5. **Build and run for production**
+6. **Build and run for production**
    ```bash
    pnpm run build # Build the code to /dist folder
    pnpm run start # Start the bot from /dist folder
