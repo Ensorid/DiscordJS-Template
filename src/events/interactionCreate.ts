@@ -1,5 +1,7 @@
 import { Collection, Events } from "discord.js";
 import { log, level } from "../utilities/logger";
+import fs from "fs";
+import path from "path";
 
 module.exports = {
 	name: Events.InteractionCreate,
@@ -48,6 +50,16 @@ module.exports = {
 		setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount);
 
 		try {
+			const settingsPath = path.join(__dirname, `../settings/${interaction.guildId}.json`);
+			const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
+
+			if (settings.commands[command.data.name].enabled === false) {
+				const locales: { [key: string]: string } = {
+					fr: `La commande \`${command.data.name}\` est désactivée sur ce serveur.`,
+				};
+
+				return interaction.reply({ content: locales[interaction.locale] ?? `The command \`${command.data.name}\` is disabled on this server.`, ephemeral: true });
+			}
 			await command.execute(interaction);
 			log(`command ${command.data.name} used by ${interaction.user.username} (${interaction.user.id}) on ${interaction.guild.name} (${interaction.guild.id})`, level.INFO);
 		} catch (error) {

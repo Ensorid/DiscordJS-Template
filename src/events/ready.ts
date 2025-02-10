@@ -1,5 +1,6 @@
 import { Events, Client, ActivityType } from "discord.js";
 import { log, level } from "../utilities/logger";
+import { syncSettings } from "../utilities/syncSettings";
 
 module.exports = {
 	name: Events.ClientReady,
@@ -10,5 +11,8 @@ module.exports = {
 			status: "idle",
 		  });
 		  log(`Ready! Logged in as ${client.user?.tag}`, level.DEBUG);
+		  client.guilds.cache.forEach((guild) => {
+			syncSettings(guild.id);
+		  });
 	},
 };

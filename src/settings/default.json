@@ -1,0 +1,12 @@
+{
+    "commands": {
+        "ping": {
+            "enabled": true,
+            "cooldown": 3
+        },
+        "clear": {
+            "enabled": true,
+            "cooldown": 3
+        }
+    }
+}
