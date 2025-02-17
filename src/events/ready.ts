@@ -10,9 +10,11 @@ module.exports = {
 			activities: [{ name: "Bot in devlopment", type: ActivityType.Custom }],
 			status: "idle",
 		  });
-		  log(`Ready! Logged in as ${client.user?.tag}`, level.DEBUG);
+		  log(`Starting synchronisation`, level.DEBUG);
 		  client.guilds.cache.forEach((guild) => {
 			syncSettings(guild.id);
 		  });
+		  log(`Synchronisation complete`, level.DEBUG);
+		  log(`Ready! Logged in as ${client.user?.tag}`, level.DEBUG);
 	},
 };
