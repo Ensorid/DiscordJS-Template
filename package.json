@@ -22,7 +22,7 @@
     "@types/node": "^22.13.1",
     "eslint": "^9.20.0",
     "globals": "^15.14.0",
-    "tsx": "^4.19.2",
+    "tsx": "^4.19.3",
     "typescript-eslint": "^8.24.0"
   }
 }
