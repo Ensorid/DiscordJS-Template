@@ -1,6 +1,7 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits } from "discord.js";
 
 module.exports = {
+	cooldown: 0,
 	data: new SlashCommandBuilder()
 		.setName("clear")
 		.setDescription("Clear an amount of message above")
@@ -13,9 +14,9 @@ module.exports = {
 				.setNameLocalizations({
 					fr: "montant",
 				})
-				.setDescription("Amount of message to delete above")
+				.setDescription("Amount of message(s) to delete above")
 				.setDescriptionLocalizations({
-					fr: "Quantité de message à effacer au dessus",
+					fr: "Quantité de message(s) à effacer au dessus",
 				})
 				.setRequired(true)
 				.setMaxValue(100))
@@ -29,10 +30,10 @@ module.exports = {
 				messages.forEach(message => message.delete().catch());
 
 				const locales: { [key: string]: string } = {
-					"fr": `${messages.size} messages ont été supprimés`,
+					"fr": `${messages.size} message${messages.size > 1 ? 's' : ''} ${messages.size > 1 ? 'ont' : 'a'} été supprimé${messages.size > 1 ? 's' : ''}`,
 				};
 
-				interaction.reply({ content: locales[interaction.locale] ?? `Cleared ${messages.size} messages.`, ephemeral: true });
+				interaction.reply({ content: locales[interaction.locale] ?? `Cleared ${messages.size} message${messages.size > 1 ? 's' : ''}.`, ephemeral: true });
 			});
 	},
 };
