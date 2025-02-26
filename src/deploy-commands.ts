@@ -3,7 +3,6 @@ import fs from "fs";
 import path from "path";
 import "dotenv/config";
 import { log, level } from "./utilities/logger";
-import { privateBot } from "../config.json";
 
 const commands: any[] = [];
 
@@ -32,17 +31,10 @@ const rest = new REST().setToken(process.env.TOKEN as string);
 
 		let data: any;
 
-		if (privateBot) {
-			data = await rest.put(
-				Routes.applicationGuildCommands(process.env.CLIENTID as string, process.env.GUILDID as string),
-				{ body: commands },
-			);
-		} else {
 			data = await rest.put(
 				Routes.applicationCommands(process.env.CLIENTID as string),
 				{ body: commands },
 			);
-		}
 
 		log(`successfully reloaded ${Array.isArray(data) ? data.length : 0} application (/) commands.`, level.DEBUG);
 	} catch (error) {
