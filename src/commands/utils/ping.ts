@@ -1,6 +1,4 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction } from "discord.js";
-import fs from "fs";
-import path from "path";
 
 module.exports = {
 	cooldown: 0,
