@@ -4,6 +4,9 @@ module.exports = {
 	cooldown: 0,
 	data: new SlashCommandBuilder()
 		.setName("clear")
+		.setNameLocalizations({
+			fr: "effacer",
+		})
 		.setDescription("Clear an amount of message above")
 		.setDescriptionLocalizations({
 			fr: "Effacer un montant de message au dessus",
@@ -30,7 +33,7 @@ module.exports = {
 				messages.forEach(message => message.delete().catch());
 
 				const locales: { [key: string]: string } = {
-					"fr": `${messages.size} message${messages.size > 1 ? 's' : ''} ${messages.size > 1 ? 'ont' : 'a'} été supprimé${messages.size > 1 ? 's' : ''}`,
+					"fr": `${messages.size < 1 ? 'Aucun' : messages.size} message${messages.size > 1 ? 's' : ''} ${messages.size > 1 ? 'ont' : 'a'} été supprimé${messages.size > 1 ? 's' : ''}`,
 				};
 
 				interaction.reply({ content: locales[interaction.locale] ?? `Cleared ${messages.size} message${messages.size > 1 ? 's' : ''}.`, ephemeral: true });
