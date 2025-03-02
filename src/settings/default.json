@@ -1,16 +1,13 @@
 {
     "commands": {
         "ping": {
-            "enabled": true,
-            "cooldown": 3
+            "enabled": true
         },
         "clear": {
-            "enabled": true,
-            "cooldown": 3
+            "enabled": true
         },
         "user":{
-            "enabled": true,
-            "cooldown": 3
+            "enabled": true
         }
     }
 }
