@@ -6,10 +6,12 @@ import path from "path";
 module.exports = {
 	name: Events.InteractionCreate,
 	async execute(interaction: any) {
+		// Return if the interaction is not a command
 		if (!interaction.isChatInputCommand()) return;
 
 		const command = interaction.client.commands.get(interaction.commandName);
 
+		// Check if the command exists
 		if (!command) {
 			log(`command ${interaction.commandName} not found for ${interaction.user.username} (${interaction.user.id}) on ${interaction.guild.name} (${interaction.guild.id})`, level.WARN);
 
@@ -21,6 +23,8 @@ module.exports = {
 			return;
 		}
 
+
+		// Check if the user is in a cooldown
 		const { cooldowns } = interaction.client;
 
 		if (!cooldowns.has(command.data.name)) {
@@ -49,10 +53,12 @@ module.exports = {
 		timestamps.set(interaction.user.id, now);
 		setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount);
 
+		// Run the command and catch any errors
 		try {
 			const settingsPath = path.join(__dirname, `../settings/${interaction.guildId}.json`);
 			const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
 
+			// Check if the command is enabled on the server
 			if (settings.commands[command.data.name].enabled === false) {
 				const locales: { [key: string]: string } = {
 					fr: `La commande \`${command.data.name}\` est désactivée sur ce serveur.`,
@@ -60,9 +66,12 @@ module.exports = {
 
 				return interaction.reply({ content: locales[interaction.locale] ?? `The command \`${command.data.name}\` is disabled on this server.`, ephemeral: true });
 			}
+
+			// Execute the command
 			await command.execute(interaction);
 			log(`command ${command.data.name} used by ${interaction.user.username} (${interaction.user.id}) on ${interaction.guild.name} (${interaction.guild.id})`, level.INFO);
 		} catch (error) {
+			// Reply to the user with an error message and log the error
 			log(error as string, level.ERROR);
 
 			const locales: { [key: string]: string } = {

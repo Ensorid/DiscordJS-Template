@@ -16,6 +16,7 @@ declare module "discord.js" {
 client.commands = new Collection();
 client.cooldowns = new Collection();
 
+// Load commands
 const foldersPath = path.join(__dirname, "commands");
 const commandFolders = fs.readdirSync(foldersPath);
 
@@ -33,6 +34,7 @@ for (const folder of commandFolders) {
 	}
 }
 
+// Load events
 const eventsPath = path.join(__dirname, "events");
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith(".js") || file.endsWith(".ts"));
 
@@ -46,4 +48,5 @@ for (const file of eventFiles) {
 	}
 }
 
+// Login the bot
 client.login(process.env.TOKEN).catch(console.error);

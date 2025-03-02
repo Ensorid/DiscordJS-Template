@@ -21,6 +21,7 @@ export function syncSettings(guildId: string): void {
 
     const serverSettings = JSON.parse(fs.readFileSync(serverSettingsPath, 'utf-8'));
 
+    // Sychronize server settings with default settings
     function mergeSettings(target: any, source: any): any {
         for (const key in source) {
             if (!target.hasOwnProperty(key)) {
