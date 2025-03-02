@@ -22,7 +22,7 @@ module.exports = {
                 if ("data" in command && "execute" in command) {
                     commands.push(command.data.toJSON());
                 } else {
-                    log(`Command at ${filePath} is missing a required "data" or "execute" property.`, level.WARN);
+                    log(`Unable to deploy command at ${filePath}. Property "data" or "execute" is missing.`, level.WARN);
                 }
             }
         }

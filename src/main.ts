@@ -28,8 +28,9 @@ for (const folder of commandFolders) {
 		const command = require(filePath);
 		if ("data" in command && "execute" in command) {
 			client.commands.set(command.data.name, command);
+			log(`Succesfully loaded command ${command.data.name}`, level.DEBUG);
 		} else {
-			log(`command at ${filePath} is missing a required "data" or "execute" property.`, level.WARN);
+			log(`Unable to load command at ${filePath}. Property "data" or "execute" is missing.`, level.WARN);
 		}
 	}
 }
