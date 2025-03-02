@@ -22,7 +22,7 @@ module.exports = {
                 if ("data" in command && "execute" in command) {
                     commands.push(command.data.toJSON());
                 } else {
-                    log(`command at ${filePath} is missing a required "data" or "execute" property.`, level.WARN);
+                    log(`Command at ${filePath} is missing a required "data" or "execute" property.`, level.WARN);
                 }
             }
         }
@@ -31,7 +31,7 @@ module.exports = {
         
         (async () => {
             try {
-                log(`refreshing ${commands.length} application (/) commands.`, level.DEBUG);
+                log(`Refreshing ${commands.length} application (/) commands.`, level.DEBUG);
         
                 let data: any;
         
@@ -40,7 +40,7 @@ module.exports = {
                         { body: commands },
                     );
         
-                log(`successfully reloaded ${Array.isArray(data) ? data.length : 0} application (/) commands.`, level.DEBUG);
+                log(`Successfully reloaded ${Array.isArray(data) ? data.length : 0} application (/) commands.`, level.DEBUG);
             } catch (error) {
                 log(error as string, level.ERROR);
             }
