@@ -4,10 +4,8 @@
   "description": "A template for Discord bot made with TypeScript and NodeJS following the discord.js guide.",
   "main": "dist/main.js",
   "scripts": {
-    "start": "node dist/deploy-commands && node .",
-    "softstart": "node .",
+    "start": "node .",
     "dev": "tsx watch src/main.ts",
-    "deploy": "tsx watch src/deploy-commands.ts",
     "build": "tsc"
   },
   "keywords": [],
