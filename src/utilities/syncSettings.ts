@@ -7,7 +7,7 @@ import path from "path";
  * @param guildId The Discord server/guild ID
  */
 export function syncSettings(guildId: string): void {
-    const settingsDir = path.join(__dirname, '..', 'settings');
+    const settingsDir = path.join(__dirname, '../../settings');
     const defaultSettingsPath = path.join(settingsDir, 'default.json');
     const serverSettingsPath = path.join(settingsDir, `${guildId}.json`);
 

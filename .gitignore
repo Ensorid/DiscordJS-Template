@@ -4,5 +4,5 @@
 
 .env
 
-/src/settings/*
-!/src/settings/default.json
+/settings/*
+!/settings/default.json
