@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node .",
     "dev": "tsx watch src/bot.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "Ensorid",

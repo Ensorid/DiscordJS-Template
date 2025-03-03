@@ -12,7 +12,7 @@ export default [
 	{
 		rules: {
 			"@typescript-eslint/no-require-imports": "warn",
-			"@typescript-eslint/no-explicit-any": "none",
+			"@typescript-eslint/no-explicit-any": "off",
 			"arrow-spacing": ["warn", { "before": true, "after": true }],
 			"brace-style": ["error", "1tbs", { "allowSingleLine": true }],
 			"comma-dangle": ["error", "always-multiline"],
