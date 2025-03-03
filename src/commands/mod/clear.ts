@@ -33,10 +33,10 @@ module.exports = {
 				messages.forEach(message => message.delete().catch());
 
 				const locales: { [key: string]: string } = {
-					"fr": `${messages.size < 1 ? 'Aucun' : messages.size} message${messages.size > 1 ? 's' : ''} ${messages.size > 1 ? 'ont' : 'a'} été supprimé${messages.size > 1 ? 's' : ''}`,
+					"fr": `${messages.size < 1 ? "Aucun" : messages.size} message${messages.size > 1 ? "s" : ""} ${messages.size > 1 ? "ont" : "a"} été supprimé${messages.size > 1 ? "s" : ""}`,
 				};
 
-				interaction.reply({ content: locales[interaction.locale] ?? `${messages.size < 1 ? 'No' : messages.size} message${messages.size > 1 ? 's' : ''} ${messages.size > 1 ? 'have' : 'has'} been deleted`, ephemeral: true });
+				interaction.reply({ content: locales[interaction.locale] ?? `${messages.size < 1 ? "No" : messages.size} message${messages.size > 1 ? "s" : ""} ${messages.size > 1 ? "have" : "has"} been deleted`, ephemeral: true });
 			});
 	},
 };
