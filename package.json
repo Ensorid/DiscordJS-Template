@@ -2,10 +2,10 @@
   "name": "discordjs-template",
   "version": "1.0",
   "description": "A template for Discord bot made with TypeScript and NodeJS following the discord.js guide.",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "node .",
-    "dev": "tsx watch src/main.ts",
+    "dev": "tsx watch src/bot.ts",
     "build": "tsc"
   },
   "keywords": [],
