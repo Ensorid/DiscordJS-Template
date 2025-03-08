@@ -55,7 +55,7 @@ module.exports = {
 
 		// Run the command and catch any errors
 		try {
-			const settingsPath = path.join(__dirname, `../settings/${interaction.guildId}.json`);
+			const settingsPath = path.join(__dirname, `../../settings/${interaction.guildId}.json`);
 			const settings = JSON.parse(fs.readFileSync(settingsPath, "utf-8"));
 
 			// Check if the command is enabled on the server
