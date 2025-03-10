@@ -50,8 +50,8 @@ module.exports = {
 			"fr": "Création du compte",
 		};
 
-		const localeJoinedAt: { [key: string]: string } = {
-			"fr": "Rejoint le",
+		const localeJoined: { [key: string]: string } = {
+			"fr": "Rejoint",
 		};
 
 		const localeNoBoost: { [key: string]: string } = {
@@ -66,7 +66,7 @@ module.exports = {
 				{ name: localeID[interaction.locale] ?? "ID", value: targetUser.id, inline: true },
 				{ name: localeRoles[interaction.locale] ?? "Role", value: interaction.guild?.members.cache.get(targetUser.id)?.roles.cache.filter(role => role.name !== "@everyone").map(role => role).join(", ") ?? "No roles", inline: false },
 				{ name: localeAccountCreation[interaction.locale] ?? "Account creation", value: `<t:${Math.floor(targetUser.createdAt.getTime() / 1000)}:R>`, inline: true },
-				{ name: localeJoinedAt[interaction.locale] ?? "Joined at", value: `<t:${Math.floor((interaction.guild?.members.cache.get(targetUser.id)?.joinedTimestamp ?? 0) / 1000)}:R>`, inline: true },
+				{ name: localeJoined[interaction.locale] ?? "Joined", value: `<t:${Math.floor((interaction.guild?.members.cache.get(targetUser.id)?.joinedTimestamp ?? 0) / 1000)}:R>`, inline: true },
 				{ name: "Boost", value: `${interaction.guild?.members.cache.get(targetUser.id)?.premiumSince ? `<t:${Math.floor(interaction.guild?.members.cache.get(targetUser.id)?.premiumSince?.getTime() ?? 0 / 1000)}:R>` : localeNoBoost[interaction.locale] ?? "No boost"}`, inline: true },
 			)
 			.setFooter({ text: `${localeFooter[interaction.locale] ?? "Asked by"} ${interaction.user.displayName}`, iconURL: interaction.user.displayAvatarURL() })
