@@ -1,6 +1,6 @@
 import { REST, Routes, Events, Client, ActivityType } from "discord.js";
-import { log, level } from "../utilities/logger";
-import { syncSettings } from "../utilities/syncSettings";
+import { log, level } from "../../utilities/logger";
+import { syncSettings } from "../../utilities/syncSettings";
 import fs from "fs";
 import path from "path";
 
@@ -16,7 +16,7 @@ module.exports = {
 		// Deploying commands
 		const commands: any[] = [];
 
-		const foldersPath = path.join(__dirname, "../commands");
+		const foldersPath = path.join(__dirname, "../../commands");
 		const commandFolders = fs.readdirSync(foldersPath);
 
 		for (const folder of commandFolders) {

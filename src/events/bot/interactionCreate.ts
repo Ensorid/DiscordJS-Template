@@ -1,5 +1,5 @@
 import { Collection, Events } from "discord.js";
-import { log, level } from "../utilities/logger";
+import { log, level } from "../../utilities/logger";
 import fs from "fs";
 import path from "path";
 

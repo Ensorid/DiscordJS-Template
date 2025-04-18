@@ -36,18 +36,31 @@ for (const folder of commandFolders) {
 }
 
 // Load events
-const eventsPath = path.join(__dirname, "events");
-const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith(".js") || file.endsWith(".ts"));
+function loadEvents(eventDir: string) {
+	const eventFile = fs.readdirSync(eventDir).filter(file => file.endsWith(".js") || file.endsWith(".ts"));
 
-for (const file of eventFiles) {
-	const filePath = path.join(eventsPath, file);
-	const event = require(filePath);
-	if (event.once) {
-		client.once(event.name, (...args) => event.execute(...args));
-	} else {
-		client.on(event.name, (...args) => event.execute(...args));
+	for (const file of eventFile) {
+		const filePath = path.join(eventDir, file);
+		const event = require(filePath);
+		if (event.once) {
+			client.once(event.name, (...args) => event.execute(...args));
+			log(`Succesfully loaded event ${event.name}`, level.DEBUG);
+		} else {
+			client.on(event.name, (...args) => event.execute(...args));
+			log(`Succesfully loaded event ${event.name}`, level.DEBUG);
+		}
+
 	}
 }
+
+const baseEventsPath = path.join(__dirname, "events");
+
+const botEventsPath = path.join(baseEventsPath, "bot");
+if (fs.existsSync(botEventsPath)) {
+	loadEvents(botEventsPath);
+}
+
+loadEvents(baseEventsPath);
 
 // Login the bot
 client.login(process.env.TOKEN).catch(console.error);
