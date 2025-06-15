@@ -1,6 +1,5 @@
 import { REST, Routes, Events, Client, ActivityType } from "discord.js";
 import { log, level } from "../../utilities/logger";
-import { syncSettings } from "../../utilities/syncSettings";
 import fs from "fs";
 import path from "path";
 
@@ -8,11 +7,6 @@ module.exports = {
 	name: Events.ClientReady,
 	once: true,
 	execute(client: Client) {
-		// Sync settings with all guild
-		log("Starting synchronisation", level.DEBUG);
-		client.guilds.cache.forEach((guild) => { syncSettings(guild.id); });
-		log("Synchronisation complete", level.DEBUG);
-
 		// Deploying commands
 		const commands: any[] = [];
 
