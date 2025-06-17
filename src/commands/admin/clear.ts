@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits } from "discord.js";
+import { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits, MessageFlags } from "discord.js";
+import { level, log } from "../../utilities/logger";
 
 module.exports = {
 	cooldown: 0,
@@ -30,13 +31,13 @@ module.exports = {
 		await interaction.channel?.messages
 			.fetch({ limit: amount })
 			.then(messages => {
-				messages.forEach(message => message.delete().catch());
+				messages.forEach(message => message.delete().catch(() => log(`Error deleting message ${message.id}:`, level.ERROR)));
 
 				const locales: { [key: string]: string } = {
 					"fr": `${messages.size < 1 ? "Aucun" : messages.size} message${messages.size > 1 ? "s" : ""} ${messages.size > 1 ? "ont" : "a"} été supprimé${messages.size > 1 ? "s" : ""}`,
 				};
 
-				interaction.reply({ content: locales[interaction.locale] ?? `${messages.size < 1 ? "No" : messages.size} message${messages.size > 1 ? "s" : ""} ${messages.size > 1 ? "have" : "has"} been deleted`, ephemeral: true });
+				interaction.reply({ content: locales[interaction.locale] ?? `${messages.size < 1 ? "No" : messages.size} message${messages.size > 1 ? "s" : ""} ${messages.size > 1 ? "have" : "has"} been deleted`, flags: MessageFlags.Ephemeral });
 			});
 	},
 };
