@@ -9,6 +9,14 @@ export enum level {
     DEBUG = "DEBUG",
 }
 
+const color = {
+	INFO: "\x1b[36m", // Cyan
+	WARN: "\x1b[33m", // Yellow
+	ERROR: "\x1b[31m", // Red
+	DEBUG: "\x1b[35m", // Magenta
+	RESET: "\x1b[0m",
+};
+
 /**
  * Custom logger function for logging messages to the console and a log file with timestamps and log levels
  * @param message The message to log
@@ -30,8 +38,12 @@ export function log(message: string, level: level): void {
 
 	// Check if the log message should be displayed in the console
 	if (logInConsole) {
-		console.log(logMessage);
+		console.log(`${color[level]}${logMessage}${color.RESET}`);
 	}
 
-	fs.appendFileSync(logFilePath, logMessage + "\n", { encoding: "utf8" });
+	try {
+		fs.appendFileSync(logFilePath, logMessage + "\n", { encoding: "utf8" });
+	} catch (error) {
+		console.error(`Error writing to log file ${logFilePath}:`, error);
+	}
 }
