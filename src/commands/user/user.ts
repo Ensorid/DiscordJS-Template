@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
+import { SlashCommandBuilder, EmbedBuilder, ChatInputCommandInteraction, MessageFlags } from "discord.js";
 
 module.exports = {
 	cooldown: 0,
@@ -72,6 +72,6 @@ module.exports = {
 			.setFooter({ text: `${localeFooter[interaction.locale] ?? "Asked by"} ${interaction.user.displayName}`, iconURL: interaction.user.displayAvatarURL() })
 			.setTimestamp();
 
-		await interaction.reply({ embeds: [cardInfo] });
+		await interaction.reply({ embeds: [cardInfo], flags: MessageFlags.Ephemeral });
 	},
 };
