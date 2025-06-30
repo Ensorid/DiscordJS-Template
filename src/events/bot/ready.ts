@@ -34,7 +34,7 @@ module.exports = {
 				log(`Refreshing ${commands.length} application (/) commands.`, level.DEBUG);
 
 				const data = await rest.put(
-					Routes.applicationCommands(process.env.CLIENTID as string),
+					Routes.applicationCommands(client.user?.id as string),
 					{ body: commands },
 				);
 
