@@ -110,8 +110,12 @@ module.exports = {
       });
     }
 
+    const locales: { [key: string]: string } = {
+        "fr": `❌ Commande inconnue.`,
+      };
+
     return interaction.reply({
-      content: '❌ Sous-commande inconnue.',
+      content: locales[interaction.locale] ?? "❌ Unknown command.",
       flags: MessageFlags.Ephemeral
     });
   }
