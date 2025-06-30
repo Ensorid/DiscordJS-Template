@@ -12,6 +12,7 @@ This project is written for fun only. I don't consider myself a developer. 🎉
 - Cooldown support
 - High customisation
 - Log system
+- Database support : JSON, SQLite and more in the future
 
 ## 🛠️ Technologies Used
 

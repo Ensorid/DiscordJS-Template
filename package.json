@@ -14,6 +14,8 @@
   "author": "Ensorid",
   "license": "MIT",
   "dependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "better-sqlite3": "^12.1.1",
     "discord.js": "^14.19.3",
     "dotenv": "^16.5.0"
   },

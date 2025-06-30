@@ -2,7 +2,10 @@ import path from "path";
 import fs from "fs";
 import { Client, Collection, GatewayIntentBits } from "discord.js";
 import "dotenv/config";
+import { initDatabase } from './database';
 import { log, level } from "./utilities/logger";
+
+initDatabase(process.env.DB_TYPE as "json" | "sqlite")
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 

@@ -4,5 +4,6 @@
 
 .env
 
+src/database/data
 /settings/*
 !/settings/default.json

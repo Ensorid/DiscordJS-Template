@@ -1,5 +1,6 @@
 import { Collection, Events } from "discord.js";
 import { log, level } from "../../utilities/logger";
+import { isCommandDisabled } from '../../database/modules/commands';
 
 module.exports = {
 	name: Events.InteractionCreate,
@@ -21,6 +22,14 @@ module.exports = {
 			return;
 		}
 
+		// Check if the command is disabled in the guild
+		const guildId = interaction.guild?.id;
+		if (guildId && await isCommandDisabled(guildId, command.data.name)) {
+			return interaction.reply({
+				content: `❌ Cette commande est désactivée sur ce serveur.`,
+				ephemeral: true
+			});
+		}
 
 		// Check if the user is in a cooldown
 		const { cooldowns } = interaction.client;
