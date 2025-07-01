@@ -1,6 +1,6 @@
 import { Collection, Events, MessageFlags } from "discord.js";
 import { log, level } from "../../utilities/logger";
-import { isCommandDisabled } from '../../database/modules/commands';
+import { isCommandDisabled } from "../../database/modules/commands";
 
 module.exports = {
 	name: Events.InteractionCreate,
@@ -26,8 +26,8 @@ module.exports = {
 		const guildId = interaction.guild?.id;
 		if (guildId && await isCommandDisabled(guildId, command.data.name)) {
 			return interaction.reply({
-				content: `❌ Cette commande est désactivée sur ce serveur.`,
-				flags: MessageFlags.Ephemeral
+				content: "❌ Cette commande est désactivée sur ce serveur.",
+				flags: MessageFlags.Ephemeral,
 			});
 		}
 
