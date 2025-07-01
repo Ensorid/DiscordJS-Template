@@ -1,4 +1,4 @@
-import { Collection, Events } from "discord.js";
+import { Collection, Events, MessageFlags } from "discord.js";
 import { log, level } from "../../utilities/logger";
 import { isCommandDisabled } from '../../database/modules/commands';
 
@@ -27,7 +27,7 @@ module.exports = {
 		if (guildId && await isCommandDisabled(guildId, command.data.name)) {
 			return interaction.reply({
 				content: `❌ Cette commande est désactivée sur ce serveur.`,
-				ephemeral: true
+				flags: MessageFlags.Ephemeral
 			});
 		}
 
@@ -53,7 +53,7 @@ module.exports = {
 					fr: `Veuillez patienter, vous êtes en attente pour la commmande \`${command.data.name}\`. Vous pourrez l'utiliser <t:${expiredTimestamp}:R>.`,
 				};
 
-				return interaction.reply({ content: locales[interaction.locale] ?? `Please wait, you are on a cooldown for \`${command.data.name}\`. You can use it again <t:${expiredTimestamp}:R>.`, ephemeral: true });
+				return interaction.reply({ content: locales[interaction.locale] ?? `Please wait, you are on a cooldown for \`${command.data.name}\`. You can use it again <t:${expiredTimestamp}:R>.`, flags: MessageFlags.Ephemeral });
 			}
 		}
 
@@ -74,9 +74,9 @@ module.exports = {
 			};
 
 			if (interaction.replied || interaction.deferred) {
-				await interaction.followUp({ content: locales[interaction.locale] ?? "There was an error while executing this command!", ephemeral: true });
+				await interaction.followUp({ content: locales[interaction.locale] ?? "There was an error while executing this command!", flags: MessageFlags.Ephemeral });
 			} else {
-				await interaction.reply({ content: locales[interaction.locale] ?? "There was an error while executing this command!", ephemeral: true });
+				await interaction.reply({ content: locales[interaction.locale] ?? "There was an error while executing this command!", flags: MessageFlags.Ephemeral });
 			}
 		}
 	},

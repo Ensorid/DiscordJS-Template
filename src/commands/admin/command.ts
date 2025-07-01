@@ -109,14 +109,5 @@ module.exports = {
         flags: MessageFlags.Ephemeral
       });
     }
-
-    const locales: { [key: string]: string } = {
-        "fr": `❌ Commande inconnue.`,
-      };
-
-    return interaction.reply({
-      content: locales[interaction.locale] ?? "❌ Unknown command.",
-      flags: MessageFlags.Ephemeral
-    });
   }
 }
