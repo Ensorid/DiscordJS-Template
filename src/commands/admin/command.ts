@@ -6,6 +6,7 @@ import {
 } from "discord.js";
 
 import { disableCommand, enableCommand } from "../../database/modules/commands";
+import { getCommandsList } from "../../utilities/commands";
 
 module.exports = {
 	cooldown: 3,
@@ -83,29 +84,51 @@ module.exports = {
 
 		}
 
-		if (subcommand === "enable") {
-			await enableCommand(guildId, commandName);
+		const commands = getCommandsList(interaction.locale);
+		const commandNameLower = commandName.toLowerCase();
 
+		const commandObj = commands.find(obj =>
+			obj.name.toLowerCase() === commandNameLower ||
+		obj.command.toLowerCase() === commandNameLower,
+		);
+
+		if (!commandObj) {
 			const locales: { [key: string]: string } = {
-				"fr": `✅ La commande \`${commandName}\` est maintenant activée.`,
+				"fr": `❌ La commande \`${commandName}\` n'existe pas.`,
 			};
 
 			return interaction.reply({
-				content: locales[interaction.locale] ?? `✅ The command \`${commandName}\` his now enabled.`,
+				content: locales[interaction.locale] ?? `❌ The command \`${commandName}\` does not exist.`,
+				flags: MessageFlags.Ephemeral,
+			});
+		}
+
+		const realCommand = commandObj.command;
+
+
+		if (subcommand === "enable") {
+			await enableCommand(guildId, realCommand);
+
+			const locales: { [key: string]: string } = {
+				"fr": `✅ La commande \`${realCommand}\` est maintenant activée.`,
+			};
+
+			return interaction.reply({
+				content: locales[interaction.locale] ?? `✅ The command \`${realCommand}\` his now enabled.`,
 				flags: MessageFlags.Ephemeral,
 			});
 
 		}
 
 		if (subcommand === "disable") {
-			await disableCommand(guildId, commandName);
+			await disableCommand(guildId, realCommand);
 
 			const locales: { [key: string]: string } = {
-				"fr": `🚫 La commande \`${commandName}\` est maintenant désactivée.`,
+				"fr": `🚫 La commande \`${realCommand}\` est maintenant désactivée.`,
 			};
 
 			return interaction.reply({
-				content: locales[interaction.locale] ?? `🚫 The command \`${commandName}\` his now disabled.`,
+				content: locales[interaction.locale] ?? `🚫 The command \`${realCommand}\` his now disabled.`,
 				flags: MessageFlags.Ephemeral,
 			});
 		}
