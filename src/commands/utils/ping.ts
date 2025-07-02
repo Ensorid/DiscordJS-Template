@@ -10,8 +10,8 @@ module.exports = {
 		}),
 	async execute(interaction: ChatInputCommandInteraction) {
 		const start = Date.now();
-		await interaction.reply({ content: "🏓 Pong :  ", flags: MessageFlags.Ephemeral });
+		await interaction.reply({ content: "🏓 Pong : ", flags: MessageFlags.Ephemeral });
 		const ping = Date.now() - start;
-		await interaction.editReply(`🏓 Pong : ${ping} ms`);
+		await interaction.editReply(`🏓 Pong : \`${ping} ms\``);
 	},
 };
