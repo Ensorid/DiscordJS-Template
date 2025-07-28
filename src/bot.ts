@@ -10,10 +10,10 @@ initDatabase(process.env.DB_TYPE as "json" | "sqlite");
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 declare module "discord.js" {
-    interface Client {
-        commands: Collection<string, any>;
-		cooldowns: Collection<any, any>;
-    }
+  interface Client {
+    commands: Collection<string, any>;
+    cooldowns: Collection<any, any>;
+  }
 }
 
 client.commands = new Collection();
@@ -25,7 +25,9 @@ const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
 	const commandsPath = path.join(foldersPath, folder);
-	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith(".js") || file.endsWith(".ts"));
+	const commandFiles = fs
+		.readdirSync(commandsPath)
+		.filter((file) => file.endsWith(".js") || file.endsWith(".ts"));
 	for (const file of commandFiles) {
 		const filePath = path.join(commandsPath, file);
 		const command = require(filePath);
@@ -33,14 +35,19 @@ for (const folder of commandFolders) {
 			client.commands.set(command.data.name, command);
 			log(`Succesfully loaded command ${command.data.name}`, level.DEBUG);
 		} else {
-			log(`Unable to load command at ${filePath}. Property "data" or "execute" is missing.`, level.WARN);
+			log(
+				`Unable to load command at ${filePath}. Property "data" or "execute" is missing.`,
+				level.WARN,
+			);
 		}
 	}
 }
 
 // Load events
 function loadEvents(eventDir: string) {
-	const eventFile = fs.readdirSync(eventDir).filter(file => file.endsWith(".js") || file.endsWith(".ts"));
+	const eventFile = fs
+		.readdirSync(eventDir)
+		.filter((file) => file.endsWith(".js") || file.endsWith(".ts"));
 
 	for (const file of eventFile) {
 		const filePath = path.join(eventDir, file);
@@ -52,7 +59,6 @@ function loadEvents(eventDir: string) {
 			client.on(event.name, (...args) => event.execute(...args));
 			log(`Succesfully loaded event ${event.name}`, level.DEBUG);
 		}
-
 	}
 }
 
