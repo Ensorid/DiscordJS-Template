@@ -42,10 +42,9 @@ To get a local copy up and running, follow these simple steps:
    ```
 
 4. **Set up your environment variables**
-   Copy the `.env.example` to `.env` file in the root directory then add your Discord bot token and ClientId:
+   Copy the `.env.example` to `.env` file in the root directory then fill your Discord bot token:
    ```
    TOKEN=YOUR_TOKEN
-   CLIENTID=YOUR_CLIENT_ID
    ```
 
 5. **Run for developement**
